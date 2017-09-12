@@ -12,7 +12,7 @@ hubble.getXML('https://dedicated.wallstreetcn.com/rss.xml', function (error, res
 
 			var title   = dom.find('title').text().trim();
 			var content = dom.find('description').text();
-			var summary = content.trim().substring(0, 50);
+			var summary = content.replace(/<\/?[^>]*>/g, '').trim().substring(0, 50);
 
 			var $ = cheerio.load(content);
 
